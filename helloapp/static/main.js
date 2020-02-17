@@ -82,11 +82,26 @@ var mapModules = (function () {
         {                        
             // console.log(marker1);
             // console.log(marker1.getLngLat());
+
             
             var latlong = e.lngLat;
             // var latlongstr = String(latlong["lat"]) +  " -- " + String(latlong["lng"]);
             console.log(latlong);
+
+            var data = {"lat":latlong["lat"], "lng":latlong["lng"]}
             marker2.setLngLat(latlong);
+
+            $.ajax(
+                {
+              type: "GET",
+              url: "/test_ajax/",
+              data: data,
+              cache: false,
+              success: function(response){
+                 console.log(response)
+              }
+            });
+
             
         });
         
